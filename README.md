@@ -7,6 +7,7 @@ Work-Lock Encryption is a proof-of-work based encryption system designed to ensu
 - **Minimal Server Work**: The server quickly encrypts data using a symmetric key derived from a computational puzzle.
 - **Client-Side Proof-of-Work**: The client must solve a puzzle to derive the symmetric key and decrypt the data.
 - **Configurable Difficulty**: The difficulty of the puzzle can be adjusted to control the computational effort required by the client.
+- **Work-Lock Chain**: An alternative implementation that mitigates parallel processing by requiring the client to solve a series of sequential puzzles, where each solution is dependent on the previous one. This approach is safer against parallel processing but may be less efficient than the original implementation.
 
 ## How It Works
 
@@ -50,9 +51,9 @@ Work-Lock Encryption is a proof-of-work based encryption system designed to ensu
 
 ### Configuration
 
-- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially O(n^k) and becomes nearly impossible for the client. to properly the difficulty read below.
+- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially \(O(2^k)\) and becomes nearly impossible for the client. To properly adjust the difficulty, read below.
 
-- **Max Solution**: Set the `max_solution` parameter to define the upper bound for the solution space. "3000000" is recommended, averages about 0.025 seconds for the server, and 1.2 seconds for the client. This should be the value changed to increase the difficulty, because of its linear impact on the resolve time.
+- **Max Solution**: Set the `max_solution` parameter to define the upper bound for the solution space. "3000000" is recommended, averaging about 0.025 seconds for the server and 1.2 seconds for the client. This should be the value changed to increase the difficulty, due to its linear impact on the resolve time.
 
 ## License
 
