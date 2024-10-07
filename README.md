@@ -1,4 +1,4 @@
-# Work-Lock Encryption
+# POW-Lock Encryption
 
 Work-Lock Encryption is a proof-of-work based encryption system designed to ensure that the client performs significant computational work to decrypt data encrypted by the server. The server performs minimal work, making it efficient for scenarios where the server needs to offload computational effort to the client.
 
