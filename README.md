@@ -75,7 +75,7 @@ In this more advanced version, the client must solve a series of proof-of-work p
 
 ### Configuration
 
-- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially \(O(2^k)\) and becomes nearly impossible for the client. To properly adjust the difficulty, read below.
+- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially O(2<sup>k</sup>) and becomes nearly impossible for the client. To properly adjust the difficulty, read below.
 
 - **Max Solution**: Set the `max_solution` parameter to define the upper bound for the solution space. The default value is genrally is recommended. This should be the value changed to increase the difficulty, due to its linear impact on the resolve time. Or the `solution_number` as well, for the chain implementation.
 
