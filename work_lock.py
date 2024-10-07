@@ -62,14 +62,14 @@ def client_solve(nonce, encrypted_data, hashed_solution, difficulty, max_solutio
     return decrypted_data
 
 
+if __name__ == "__main__":
+    difficulty = 4  # Number of leading zeros required in the hash
+    max_solution = 1000000  # Upper bound for the solution space
+    data_to_encrypt = "Secret data"
+    nonce, encrypted_data, hashed_solution = server_setup(difficulty, max_solution, data_to_encrypt)
+    decrypted_data = client_solve(nonce, encrypted_data, hashed_solution, difficulty, max_solution)
 
-difficulty = 4  # Number of leading zeros required in the hash
-max_solution = 3000000  # Upper bound for the solution space
-data_to_encrypt = "Secret data"
-nonce, encrypted_data, hashed_solution = server_setup(difficulty, max_solution, data_to_encrypt)
-decrypted_data = client_solve(nonce, encrypted_data, hashed_solution, difficulty, max_solution)
+    # Assert that the decrypted data matches the original data
+    assert decrypted_data == data_to_encrypt, "Decryption failed!"
 
-# Assert that the decrypted data matches the original data
-assert decrypted_data == data_to_encrypt, "Decryption failed!"
-
-print("Decryption successful! Data matches.")
+    print("Decryption successful! Data matches.")
