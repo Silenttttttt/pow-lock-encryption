@@ -64,7 +64,7 @@ def client_solve(nonce, encrypted_data, hashed_solution, difficulty, max_solutio
 
 if __name__ == "__main__":
     difficulty = 4  # Number of leading zeros required in the hash
-    max_solution = 1000000  # Upper bound for the solution space
+    max_solution = 3000000  # Upper bound for the solution space
     data_to_encrypt = "Secret data"
     nonce, encrypted_data, hashed_solution = server_setup(difficulty, max_solution, data_to_encrypt)
     decrypted_data = client_solve(nonce, encrypted_data, hashed_solution, difficulty, max_solution)
