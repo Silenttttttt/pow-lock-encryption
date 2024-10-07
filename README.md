@@ -11,15 +11,34 @@ POW-Lock Encryption is a proof-of-work based encryption system designed to ensur
 
 ## How It Works
 
-1. **Server Setup**:
-   - The server generates a random nonce and selects a random starting point within a defined solution space.
-   - It finds a solution that meets a specified difficulty requirement and uses this solution as a symmetric key to encrypt data.
-   - The server provides the client with the nonce, encrypted data, and a hash of the solution.
+### 1. Single Proof-of-Work Implementation
 
-2. **Client Solve**:
-   - The client receives the nonce, encrypted data, and the hash of the solution.
-   - It performs computational work to find the solution that matches the hash.
-   - Once the solution is found, the client uses it as a symmetric key to decrypt the data.
+In this simpler implementation, the client performs a single computational task to decrypt the data.
+
+#### **Server Setup**:
+- The server generates a random nonce and selects a random starting point within a defined solution space.
+- It finds a solution that meets a specified difficulty requirement and uses this solution as a symmetric key to encrypt the data.
+- The server provides the client with the nonce, encrypted data, and a hash of the solution.
+
+#### **Client Solve**:
+- The client receives the nonce, encrypted data, and the hash of the solution.
+- It performs computational work to find the solution that matches the hash by iterating through possible solutions.
+- Once the correct solution is found, the client uses it as a symmetric key to decrypt the data.
+
+### 2. Chained Proof-of-Work Implementation
+
+In this more advanced version, the client must solve a series of proof-of-work puzzles in sequence, where each solution depends on the result of the previous step. This makes it harder for the client to optimize the solve process.
+
+#### **Server Setup**:
+- The server generates a random nonce and selects multiple random starting points within the solution space (for each chain step).
+- For each step, the server finds a solution that meets the specified difficulty and uses the hash of the solution to generate the nonce for the next step (solution chaining).
+- After the final step, the last solution is used as the symmetric key to encrypt the data.
+- The server provides the client with the initial nonce, the encrypted data, and a hash of each solution in the chain.
+
+#### **Client Solve**:
+- The client receives the initial nonce, the encrypted data, and the hash chain (hash of each solution in the series).
+- It performs a sequential search to find the correct solution for each step, where the result of one step is used as the nonce for the next step.
+- Once the client finds the final solution, it uses this as the symmetric key to decrypt the data.
 
 
 3. **Performance**:
