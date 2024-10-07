@@ -25,7 +25,7 @@ Work-Lock Encryption is a proof-of-work based encryption system designed to ensu
 ### Prerequisites
 
 - Python 3.x
-- `cryptography` library
+- `cryptography` library (optional, used for Fernet sym encryption in the example)
 
 ### Installation
 
