@@ -7,25 +7,15 @@ POW-Lock Encryption is a proof-of-work based encryption system designed to ensur
 - **Minimal Server Work**: The server quickly encrypts data using a symmetric key derived from a computational puzzle.
 - **Client-Side Proof-of-Work**: The client must solve a puzzle to derive the symmetric key and decrypt the data.
 - **Configurable Difficulty**: The difficulty of the puzzle can be adjusted to control the computational effort required by the client.
-- **POW-Lock Chain**: An alternative implementation that mitigates parallel processing by requiring the client to solve a series of sequential puzzles, where each solution is dependent on the previous one. This approach is safer against parallel processing but may theoretically be less efficient than the original implementation.
+- **POW-Lock Chain**: An alternative implementation that mitigates parallel processing by requiring the client to solve a series of sequential puzzles, where each solution is dependent on the previous one. This approach is safer against parallel processing but may theoretically be less efficient than the original implementation. This is the recommended implementation.
+
+
 
 ## How It Works
 
-### 1. Single Proof-of-Work Implementation
 
-In this simpler implementation, the client performs a single computational task to decrypt the data.
 
-#### **Server Setup**:
-- The server generates a random nonce and selects a random starting point within a defined solution space.
-- It finds a solution that meets a specified difficulty requirement and uses this solution as a symmetric key to encrypt the data.
-- The server provides the client with the nonce, encrypted data, and a hash of the solution.
-
-#### **Client Solve**:
-- The client receives the nonce, encrypted data, and the hash of the solution.
-- It performs computational work to find the solution that matches the hash by iterating through possible solutions.
-- Once the correct solution is found, the client uses it as a symmetric key to decrypt the data.
-
-### 2. Chained Proof-of-Work Implementation
+### 1. Chained Proof-of-Work Implementation
 
 In this more advanced version, the client must solve a series of proof-of-work puzzles in sequence, where each solution depends on the result of the previous step. This makes it harder for the client to optimize the solve process.
 
@@ -44,6 +34,21 @@ In this more advanced version, the client must solve a series of proof-of-work p
 3. **Performance**:
    - On average, the server creates the puzzle 10 times faster than the client resolves them at the default settings. This ensures that the server's workload is minimal while the client performs significant computational work.
    - Due to the random nature, it is possible for the client to solve it faster than the server, although it's rare, and the POW-Lock chain mitigates this.
+
+### 2. Single Proof-of-Work Implementation
+
+In this simpler implementation, the client performs a single computational task to decrypt the data.
+
+#### **Server Setup**:
+- The server generates a random nonce and selects a random starting point within a defined solution space.
+- It finds a solution that meets a specified difficulty requirement and uses this solution as a symmetric key to encrypt the data.
+- The server provides the client with the nonce, encrypted data, and a hash of the solution.
+
+#### **Client Solve**:
+- The client receives the nonce, encrypted data, and the hash of the solution.
+- It performs computational work to find the solution that matches the hash by iterating through possible solutions.
+- Once the correct solution is found, the client uses it as a symmetric key to decrypt the data.
+
 
 ## Usage
 
