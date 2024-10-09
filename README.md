@@ -72,10 +72,10 @@ In this simpler implementation, the client performs a single computational task 
 
 ### Running the Code
 
-1. Open `work_lock.py` and adjust the `difficulty`, `max_solution`, and `solution_number` parameters as needed.
+1. Open `work_lock_chain.py` and adjust the `difficulty`, `max_solution`, and `solution_number` parameters as needed.
 2. Run the script:
    ```bash
-   python work_lock.py
+   python work_lock_chain.py
    ```
 
 ### Configuration
