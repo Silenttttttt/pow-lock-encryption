@@ -80,11 +80,11 @@ In this simpler implementation, the client performs a single computational task 
 
 ### Configuration
 
-- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially O(2<sup>k</sup>) and quickly becomes extremely slow for the client to solve. To properly adjust the difficulty, read below.
+- **Difficulty**: Adjust the `difficulty` parameter to control the number of leading zeros required in the hash. I recommend leaving it at 4, because the time complexity increases exponentially O(2<sup>n</sup>) and quickly becomes extremely slow for the client to solve. To properly adjust the difficulty, read below.
 
-- **Max Solution**: Set the `max_solution` parameter to define the upper bound for the solution space. The default value is genrally is recommended. This should be the value changed to increase the difficulty, due to its linear impact on the resolve time. Or the `solution_number` as well, for the chain implementation.
+- **Max Solution**: Set the `max_solution` parameter to define the upper bound for the solution space. The default value is generally is recommended. This should be the value changed to increase the difficulty, due to its linear O(n) impact on the resolve time. Or the `solution_number` as well, for the chain implementation.
 
-- **Solution Number**: For the pow-lock chain implementation, set the `solution_number` to define the number of sequential solutions required. This parameter can be experimented with, but a default of 5 is recommended. It should also be linear.
+- **Solution Number**: For the pow-lock chain implementation, set the `solution_number` to define the number of sequential solutions required. This parameter can be experimented with, but a default of 5 is recommended. It should also be linear O(n).
 
 ## License
 
