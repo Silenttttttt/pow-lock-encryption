@@ -7,7 +7,7 @@ POW-Lock Encryption is a proof-of-work based encryption system designed to ensur
 - **Minimal Server Work**: The server quickly encrypts data using a symmetric key derived from a computational puzzle.
 - **Client-Side Proof-of-Work**: The client must solve a puzzle to derive the symmetric key and decrypt the data.
 - **Configurable Difficulty**: The difficulty of the puzzle can be adjusted to control the computational effort required by the client.
-- **POW-Lock Chain**: An alternative implementation that mitigates parallel processing by requiring the client to solve a series of sequential puzzles, where each solution is dependent on the previous one. This approach is safer against parallel processing but may theoretically be less efficient than the original implementation. This is the recommended implementation.
+- **POW-Lock Chain**: A better alternative implementation that mitigates parallel processing by requiring the client to solve a series of sequential puzzles, where each solution is dependent on the previous one. This approach is safer against parallel processing but may theoretically be less efficient than the original implementation. This is the recommended implementation.
 
 
 
